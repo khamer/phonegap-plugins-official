@@ -18,7 +18,7 @@ EmailComposer.ComposeResultType =
 
 // showEmailComposer : all args optional
 
-EmailComposer.prototype.showEmailComposer = function(subject,body,toRecipients,ccRecipients,bccRecipients,bIsHTML)
+EmailComposer.prototype.showEmailComposer = function(subject,body,toRecipients,ccRecipients,bccRecipients,bIsHTML,attachment)
 {
 	var args = {};
 	if(toRecipients)
@@ -33,6 +33,8 @@ EmailComposer.prototype.showEmailComposer = function(subject,body,toRecipients,c
 		args.body = body;
 	if(bIsHTML)
 		args.bIsHTML = bIsHTML;
+	if(attachment)
+		args.attachment = attachment;
 
 	PhoneGap.exec("EmailComposer.showEmailComposer",args);
 }

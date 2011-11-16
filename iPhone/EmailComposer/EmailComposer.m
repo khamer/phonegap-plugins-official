@@ -22,6 +22,11 @@
 	NSString* subject = [options valueForKey:@"subject"];
 	NSString* body = [options valueForKey:@"body"];
 	NSString* isHTML = [options valueForKey:@"bIsHTML"];
+	NSString* mimeType = @"image/jpeg";
+	NSString* fileName = @"petwatch.jpeg";
+    
+	NSString* encodedData = [options valueForKey:@"attachment"];
+	NSData* attachment = [Base64 decode:encodedData];
 	
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
@@ -40,6 +45,11 @@
 		{
 			[picker setMessageBody:body isHTML:NO];
 		}
+		
+		if(attachment != nil)
+		{
+			[picker addAttachmentData:attachment mimeType:mimeType fileName:fileName];
+		}
 	}
 	
 	// Set recipients
@@ -56,14 +66,8 @@
 		[picker setBccRecipients:[ bccRecipientsString componentsSeparatedByString:@","]];
 	}
 	
-    // Attach an image to the email
-	// NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
-	//  NSData *myData = [NSData dataWithContentsOfFile:path];
-	//  [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"rainy"];
-    
     
     [[ super appViewController ] presentModalViewController:picker animated:YES];
-    [picker release];
 }
 
 
@@ -96,8 +100,6 @@
 	
 	NSString* jsString = [[NSString alloc] initWithFormat:@"window.plugins.emailComposer._didFinishWithResult(%d);",webviewResult];
 	[self writeJavascript:jsString];
-	[jsString release];
-	
 }
 
 @end

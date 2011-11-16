@@ -14,6 +14,8 @@
 #import "PGPlugin.h"
 #endif
 
+#import "Base64.h"
+
 
 @interface EmailComposer : PGPlugin < MFMailComposeViewControllerDelegate > {
 
