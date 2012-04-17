@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 
 #import <UIKit/UIKit.h>
-#ifdef PHONEGAP_FRAMEWORK
-#import <PhoneGap/PGPlugin.h>
-#import <PhoneGap/NSData+Base64.h>
+
+#ifdef CORDOVA_FRAMEWORK
+    #import <Cordova/CDVPlugin.h>
+    #import <Cordova/NSData+Base64.h>
 #else
-#import "PGPlugin.h"
-#import "NSData+Base64.h"
+    #import "CDVPlugin.h"
+    #import "NSData+Base64.h"
 #endif
 
-@interface SaveImage : PGPlugin {
+@interface SaveImage : CDVPlugin {
 }
 
 - (void)saveImage:(NSMutableArray*)sdata withDict:(NSMutableDictionary*)options;
