@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#ifdef PHONEGAP_FRAMEWORK
-#import <PhoneGap/NSData+Base64.h>
+#ifdef CORDOVA_FRAMEWORK
+    #import <Cordova/NSData+Base64.h>
 #else
-#import "NSData+Base64.h"
+    #import "NSData+Base64.h"
 #endif
 
 #import "SaveImage.h"

@@ -16,10 +16,10 @@ function SaveImage() {
  * Save an image to user's Photo Library
  */
 SaveImage.prototype.saveImage = function(data) {
-    PhoneGap.exec("SaveImage.saveImage", data);
+    Cordova.exec("SaveImage.saveImage", data);
 };
 
-PhoneGap.addConstructor(function() 
+Cordova.addConstructor(function() 
 {
 	if(!window.plugins)
 	{
